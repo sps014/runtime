@@ -55,5 +55,12 @@ namespace System.Collections.Generic
             value = default;
             return false;
         }
+
+        public static void RemoveAt<T>(this List<T> list, Index index)=> list.RemoveAt(index.GetOffset(list.Count));
+        public static void Insert<T>(this List<T> list, Index index, T data)=> list.Insert(index.GetOffset(list.Count), data);
+        public static int IndexOf<T>(this List<T> list, T data, Index index)=> list.IndexOf(data, index.GetOffset(list.Count));
+        public static void InsertRange<T>(this List<T> list, Index index, IEnumerable<T> data)=> list.InsertRange(index.GetOffset(list.Count), data);
+        public static void RemoveRange<T>(this List<T> list, Index index, int count)=> list.RemoveRange(index.GetOffset(list.Count), count);
+
     }
 }
